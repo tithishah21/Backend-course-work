@@ -8,7 +8,6 @@ const adminRoutes= require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 //imported router object from admin.js
 app.use(bodyParser.urlencoded({extended: false}));
-
 app.use(adminRoutes);
 app.use(shopRoutes);
 app.listen(3000); 
