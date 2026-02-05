@@ -1,6 +1,8 @@
 const http = require('http');
 //creates server
 
+const bodyParser = require('body-parser');
+
 const express = require('express');
 //using express.js
 
@@ -18,6 +20,8 @@ const app = express();
 //     console.log("this always runs!!!");
 //     next();
 // });
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/addproduct',(req,res, next) => {
     console.log("In add product middleware");
