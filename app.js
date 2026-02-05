@@ -15,15 +15,11 @@ app.use((req,res, next) => {
 //user goes to the website, middleware runs first and console prints "middleware" and the goes to the next route
 app.use((req,res, next) => {
     console.log("In another middleware");
+    res.send("<h1>Server working woohoo!!!</h1> <i>Hello from express</i>");
     next();  
 });
-
-//next allows the argument to travel on the next req
-app.get('/', (req, res) => {
-    res.send("<h1>Server working</h1>");
-});
-
 //SO BASICALLY THE FLOW IS LIKE: request -> middleware -> route -> response
-const server = http.createServer(app);
 
-server.listen(3000); 
+// const server = http.createServer(app);
+// server.listen(3000); 
+app.listen(3000); // this will do what the above 2 lines will do
