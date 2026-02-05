@@ -14,19 +14,19 @@ const app = express();
 // });
 //user goes to the website, middleware runs first and console prints "middleware" and the goes to the next route
 
-app.use('/',(req,res,next) => {
-    console.log("this always runs!!!");
-    next();
-});
+// app.use('/',(req,res,next) => {
+//     console.log("this always runs!!!");
+//     next();
+// });
 
 app.use('/addproduct',(req,res, next) => {
-    console.log("In another another middleware");
+    console.log("In add product middleware");
     res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>');
     // next();  
 });
 
 app.use('/product',(req,res,next)=>{
-    console.log("product runs");
+    console.log("product runs / product middleware");
     console.log(req.body);
     res.redirect('/'); //we want to redirect this page to /
 });
