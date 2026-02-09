@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router(); //express.js feature
 
 router.get('/addproduct',(req,res, next) => {
-    console.log("In add product middleware");
+    console.log("In addproduct middleware");
     res.sendFile(path.join(__dirname,'../','views','addproduct.html'));
     // next();  
 });
