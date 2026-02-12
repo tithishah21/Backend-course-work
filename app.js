@@ -4,6 +4,16 @@ const bodyParser = require('body-parser');
 const express = require('express');
 //using express.js
 const app = express(); 
+
+
+app.set('view engine','pug'); //using 'pug' as any string
+//app.set() allows to set any values globally on our express application, can also be keys and anything
+//another way of sharing data across application
+
+app.set('views','views');
+
+
+
 const adminData= require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 //imported router object from admin.js
