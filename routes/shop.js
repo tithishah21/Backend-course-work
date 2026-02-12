@@ -11,7 +11,10 @@ router.get('/',(req,res, next) => {
 
     // console.log('shop.js - ',adminData.products);
     
-    res.render('shop'); //from app.js, it knows that default templating engine is pug so it will automatically look for .pug files in views folder i.e., shop.pug here
+
+
+    const products = adminData.products;
+    res.render('shop',{prods: products, docTitle: 'Shop'}); //from app.js, it knows that default templating engine is pug so it will automatically look for .pug files in views folder i.e., shop.pug here
 
 
 
