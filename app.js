@@ -11,6 +11,7 @@ app.set('view engine','pug'); //using 'pug' as any string
 //another way of sharing data across application
 
 app.set('views','views');
+//our default templating engine is set to pug and so the view engine is asked to look into 'views' folder (left in bracket)
 
 
 

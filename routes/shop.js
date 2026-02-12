@@ -9,9 +9,13 @@ const adminData = require('./admin');
 
 router.get('/',(req,res, next) => {
 
-    console.log('shop.js - ',adminData.products);
+    // console.log('shop.js - ',adminData.products);
     
-    res.sendFile(path.join(rootDir,'views', 'shop.html'));
+    res.render('shop'); //from app.js, it knows that default templating engine is pug so it will automatically look for .pug files in views folder i.e., shop.pug here
+
+
+
+    // res.sendFile(path.join(rootDir,'views', 'shop.html'));
     //join constructs a path by concatenating different segments
     //dirname is a global variable that holds the absolute path on our OS to this project folder
 
