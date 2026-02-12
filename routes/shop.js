@@ -5,9 +5,12 @@ const rootDir = require('../util/path');
 
 const router = express.Router();
 
+const adminData = require('./admin');
+
 router.get('/',(req,res, next) => {
-    // console.log("In another middleware");
-    // res.send('<h1>Server working woohoo!!!</h1> <i>Hello from express</i>');
+
+    console.log('shop.js - ',adminData.products);
+    
     res.sendFile(path.join(rootDir,'views', 'shop.html'));
     //join constructs a path by concatenating different segments
     //dirname is a global variable that holds the absolute path on our OS to this project folder

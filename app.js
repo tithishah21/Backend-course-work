@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 //using express.js
 const app = express(); 
-const adminRoutes= require('./routes/admin');
+const adminData= require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 //imported router object from admin.js
 
@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //and Express will return that file automatically — no route handler needed.
 //So it turns your public folder into a “static files” folder (CSS, images, JS, etc).
 
-app.use('/admin',adminRoutes);
+app.use('/admin',adminData.routes);
 app.use(shopRoutes);
 
 app.use((req,res,next)=>{
