@@ -32,7 +32,9 @@ app.use('/admin',adminData.routes);
 app.use(shopRoutes);
 
 app.use((req,res,next)=>{
-    res.status(404).sendFile(path.join(__dirname,'views','404.html'));
+    res.status(404).render('404');
+
+    // res.status(404).sendFile(path.join(__dirname,'views','404.html'));
     //here we will not go to "../" as app.js is already in the root directory
 
     // enter any random url now and it will redirect to 404.html page
