@@ -10,7 +10,7 @@ const products = []; //will store the objects we enter
 
 router.get('/addproduct',(req,res, next) => {
 
-    res.render('addproduct',{pageTitle: 'Add Product'});
+    res.render('addproduct',{pageTitle: 'Add Product', path:'/admin/addproduct'});
 
     // console.log("In addproduct middleware");
     // res.sendFile(path.join(rootDir,'views','addproduct.html')); 
