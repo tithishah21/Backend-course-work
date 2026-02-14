@@ -1,12 +1,18 @@
 const http = require('http');
 //creates server
 const bodyParser = require('body-parser');
+
+const expressHbs = require('express-handlebars');
+//for installng handlebars
+
 const express = require('express');
 //using express.js
 const app = express(); 
 
+app.engine('handlebars',expressHbs());
+app.set('view engine','handlebars');
 
-app.set('view engine','pug'); //using 'pug' as any string
+// app.set('view engine','pug'); //using 'pug' as any string
 //app.set() allows to set any values globally on our express application, can also be keys and anything
 //another way of sharing data across application
 
