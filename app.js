@@ -10,6 +10,7 @@ const app = express();
 
 app.engine('handlebars', engine({ defaultLayout: 'main-layout' }));
 app.set('view engine','handlebars');
+//for using handlebars
 
 // app.set('view engine','pug'); //using 'pug' as any string
 //app.set() allows to set any values globally on our express application, can also be keys and anything
