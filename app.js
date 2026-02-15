@@ -8,16 +8,21 @@ const express = require('express');
 //using express.js
 const app = express(); 
 
-app.engine('handlebars', engine({ defaultLayout: 'main-layout' }));
-app.set('view engine','handlebars');
+// app.engine('handlebars', engine({ defaultLayout: 'main-layout' }));
+// app.set('view engine','handlebars');
 //for using handlebars
+
+
+
+app.set('view engine','ejs')
+
 
 // app.set('view engine','pug'); //using 'pug' as any string
 //app.set() allows to set any values globally on our express application, can also be keys and anything
 //another way of sharing data across application
 
 app.set('views','views');
-//our default templating engine is set to pug and so the view engine is asked to look into 'views' folder (left in bracket)
+// view engine (could be pug or ejs or handlebars) will look into the views folder
 
 
 
