@@ -1,15 +1,14 @@
 const http = require('http');
 //creates server
 const bodyParser = require('body-parser');
-
-const expressHbs = require('express-handlebars');
+const { engine } = require('express-handlebars');
 //for installng handlebars
 
 const express = require('express');
 //using express.js
 const app = express(); 
 
-app.engine('handlebars',expressHbs());
+app.engine('handlebars', engine({ defaultLayout: 'main-layout' }));
 app.set('view engine','handlebars');
 
 // app.set('view engine','pug'); //using 'pug' as any string
