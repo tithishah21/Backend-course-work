@@ -1,6 +1,8 @@
 const http = require('http');
 //creates server
+
 const bodyParser = require('body-parser');
+
 const { engine } = require('express-handlebars');
 //for installng handlebars
 
@@ -12,11 +14,7 @@ const app = express();
 // app.set('view engine','handlebars');
 //for using handlebars
 
-
-
 app.set('view engine','ejs')
-
-
 // app.set('view engine','pug'); //using 'pug' as any string
 //app.set() allows to set any values globally on our express application, can also be keys and anything
 //another way of sharing data across application
@@ -24,9 +22,8 @@ app.set('view engine','ejs')
 app.set('views','views');
 // view engine (could be pug or ejs or handlebars) will look into the views folder
 
+const adminRoutes= require('./routes/admin');
 
-
-const adminData= require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 //imported router object from admin.js
 
@@ -39,15 +36,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 //and Express will return that file automatically — no route handler needed.
 //So it turns your public folder into a “static files” folder (CSS, images, JS, etc).
 
-app.use('/admin',adminData.routes);
+app.use('/admin',adminRoutes.routes);
+
 app.use(shopRoutes);
 
 app.use((req,res,next)=>{
     res.status(404).render('404',{pageTitle: 'Page Not Found'});
-
     // res.status(404).sendFile(path.join(__dirname,'views','404.html'));
     //here we will not go to "../" as app.js is already in the root directory
-
     // enter any random url now and it will redirect to 404.html page
 });
 
