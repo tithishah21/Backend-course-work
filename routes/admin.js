@@ -1,21 +1,18 @@
 const path = require('path');
 const express = require('express');
 
-const rootDir = require('../util/path');
+
+const productsController = require('../controllers/products');
+
+
+// const rootDir = require('../util/path');
 //our root directory
 
 const router = express.Router(); //express.js feature
 
 const products = []; //will store the objects we enter
 
-router.get('/addproduct',(req,res, next) => {
-
-    res.render('addproduct',{pageTitle: 'Add Product', path:'/admin/addproduct'});
-
-    // console.log("In addproduct middleware");
-    // res.sendFile(path.join(rootDir,'views','addproduct.html')); 
-    //instead of __dirname, using rootDir
-});
+router.get('/addproduct',productsController.getAddProduct);
 //router.get is basically doing - whwnever we go to admin/addproduct , it will send us to a page addproduct.html.
 
 router.post('/addproduct',(req,res,next)=>{
