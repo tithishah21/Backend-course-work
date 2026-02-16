@@ -1,13 +1,13 @@
 const path = require('path');
+
 const express = require('express');
 
-const rootDir = require('../util/path');
+const productsController = require('../controllers/products');
 
 const router = express.Router();
 
-const adminData = require('./admin');
 
-router.get('/',
+router.get('/', productsController.getProducts
     //from app.js, it knows that default templating engine is (say) pug so it will automatically look for .pug files in views folder i.e., shop.pug here
 
     // res.sendFile(path.join(rootDir,'views', 'shop.html'));
