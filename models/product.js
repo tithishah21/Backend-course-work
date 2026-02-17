@@ -12,7 +12,7 @@ module.exports = class Product {
     }
 
     static fetchAll() {
-        return this.products;
+        return products;
         //returns the names of all the products in the products array
     }
 }
