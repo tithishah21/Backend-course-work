@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 const { engine } = require('express-handlebars');
 //for installng handlebars
 
+
+const errorController = require('./controllers/error');
+//controller for 404 page 
+
 const express = require('express');
 //using express.js
 const app = express(); 
@@ -40,11 +44,6 @@ app.use('/admin',adminRoutes.routes);
 
 app.use(shopRoutes);
 
-app.use((req,res,next)=>{
-    res.status(404).render('404',{pageTitle: 'Page Not Found'});
-    // res.status(404).sendFile(path.join(__dirname,'views','404.html'));
-    //here we will not go to "../" as app.js is already in the root directory
-    // enter any random url now and it will redirect to 404.html page
-});
+app.use(errorController.get404);
 
 app.listen(3000); 
