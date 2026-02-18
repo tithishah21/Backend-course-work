@@ -28,8 +28,15 @@ module.exports = class Product {
         //each product gets pushed in the products array
     }
 
-    static fetchAll() {
-        return products;
+    static fetchAll(cb) {
+        const p = path.join(path.dirname(require.main.filename),'data','products.json');
+        fs.readFile(p, (err,fileContent) => {
+            if(err){
+                cb([]);
+            }
+            cb(JSON.parse(fileContent));
+        })
+        
         //returns the names of all the products in the products array
     }
 }
