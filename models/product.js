@@ -1,4 +1,8 @@
-const products = [];
+const fs = require('fs');
+const path =  require('path');
+//instead of storing in an array,we will store the data in a file now 
+
+// const products = [];
 
 module.exports = class Product {
     constructor(t){
@@ -6,7 +10,11 @@ module.exports = class Product {
     }
 
     save() {
-        products.push(this);
+        const p = path.join(path.dirname(require.main.filename),'data','products.json');
+        //defining a path to data folder and products.json file where our data will be stored
+
+
+        // products.push(this);
         //this refers to the object created in our class
         //each product gets pushed in the products array
     }
