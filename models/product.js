@@ -12,7 +12,16 @@ module.exports = class Product {
     save() {
         const p = path.join(path.dirname(require.main.filename),'data','products.json');
         //defining a path to data folder and products.json file where our data will be stored
-
+        fs.readFile(p, (err, fileContent) => {
+            let products = [];
+            if (!err) {
+                products = JSON.parse(fileContent);
+            }
+            products.push(this);
+            fs.writeFile(p, JSON.stringify(products), (err) => {
+                console.log(err);
+            });
+        });
 
         // products.push(this);
         //this refers to the object created in our class
