@@ -10,7 +10,7 @@ const getProductsFromFile =  cb => {
             if(err){
                 return cb([]);
             } else {
-                cb(JSON.parse(fileContent));
+                cb(JSON.parse(fileContent.toString()));
             }
             
         })
