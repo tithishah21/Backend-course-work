@@ -6,16 +6,12 @@ const productsController = require('../controllers/products');
 
 const router = express.Router();
 
+router.get('/', productsController.getProducts);
 
-router.get('/', productsController.getProducts
-    //from app.js, it knows that default templating engine is (say) pug so it will automatically look for .pug files in views folder i.e., shop.pug here
+router.get('/products');
 
-    // res.sendFile(path.join(rootDir,'views', 'shop.html'));
-    //join constructs a path by concatenating different segments
-    //dirname is a global variable that holds the absolute path on our OS to this project folder
+router.get('/cart');
 
-    //dirname will point to routes folder but views is a different folder
-    // "../" will help it to redirect it to move up 1 folder
-);
+router.get('/checkout');
 
 module.exports = router;
