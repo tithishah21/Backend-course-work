@@ -14,3 +14,5 @@ router.get('/products');
 router.post('/addproduct',adminController.postAddProduct);
 
 exports.routes = router;
+
+
