@@ -108,7 +108,25 @@ main {
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.form-control textarea {
+    width: 100%;
+    border: 1px solid #b7c8f8;
+    border-radius: 12px;
+    padding: 0.72rem 0.85rem;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--text);
+    background: #fbfcff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
 .form-control input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(42, 102, 255, 0.16);
+}
+
+.form-control textarea:focus {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 4px rgba(42, 102, 255, 0.16);
