@@ -154,6 +154,34 @@ main {
     transform: translateY(0);
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+}
+
+.product-item {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1rem;
+}
+
+.card__image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #eef3ff;
+}
+
+.card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 @media (max-width: 640px) {
     .main-header {
         padding: 0 1rem;
