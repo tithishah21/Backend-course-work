@@ -18,7 +18,7 @@ exports.getProduct = (req, res, next) => {
         if (!product) {
             return res.redirect('/products');
         }
-
+        
         console.log('Product details opened:', {
             id: product.id,
             title: product.title,
@@ -26,7 +26,11 @@ exports.getProduct = (req, res, next) => {
             description: product.description,
             price: product.price
         });
-        res.redirect('/');
+        return res.render('shop/product-detail', {
+            product: product,
+            pageTitle: product.title,
+            path: '/products'
+        });
     });
 };
   

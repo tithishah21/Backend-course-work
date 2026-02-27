@@ -32,6 +32,10 @@ form {
     display: inline;
 }
 
+.centered {
+    text-align: center;
+}
+
 .main-header {
     width: 100%;
     min-height: 4rem;
@@ -288,6 +292,21 @@ form {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.product-detail__image {
+    width: min(420px, 90vw);
+    margin: 0 auto;
+    border-radius: 12px;
+    background: #eef3ff;
+    padding: 0.35rem;
+}
+
+.product-detail__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
 }
 
 @media (max-width: 640px) {
