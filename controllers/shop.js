@@ -15,7 +15,17 @@ exports.getProducts = (req,res, next) => {
 exports.getProduct = (req, res, next) => {
     const prodId = req.params.productId;
     Product.findById(prodId, product => {
-        console.log(prodId);
+        if (!product) {
+            return res.redirect('/products');
+        }
+
+        console.log('Product details opened:', {
+            id: product.id,
+            title: product.title,
+            imageUrl: product.imageUrl,
+            description: product.description,
+            price: product.price
+        });
         res.redirect('/');
     });
 };
