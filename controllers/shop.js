@@ -76,9 +76,23 @@ exports.getCart = (req,res,next) => {
 exports.postCart = (req,res,next) => {
     const prodId = req.body.productId;
     Product.findById(prodId,(product)=>{
+        if (!product) {
+            return res.redirect('/products');
+        }
         Cart.addProduct(prodId,product.price);
+        return res.redirect('/cart');
     });
-    res.redirect('/cart');
+}
+
+exports.postCartDeleteProduct = (req, res, next) => {
+    const prodId = req.body.productId;
+    Product.findById(prodId, product => {
+        if (!product) {
+            return res.redirect('/cart');
+        }
+        Cart.deleteProduct(prodId, product.price);
+        return res.redirect('/cart');
+    });
 }
 
 exports.getOrders = (req,res,next) => {
