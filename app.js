@@ -10,6 +10,8 @@ const { engine } = require('express-handlebars');
 const errorController = require('./controllers/error');
 //controller for 404 page 
 
+const db = require('./util/database');
+
 const express = require('express');
 //using express.js
 const app = express(); 
@@ -30,6 +32,8 @@ const adminRoutes= require('./routes/admin');
 
 const shopRoutes = require('./routes/shop');
 //imported router object from admin.js
+
+db.execute('SELECT * FROM products');
 
 const path = require('path');
 
