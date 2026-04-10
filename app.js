@@ -33,11 +33,14 @@ const adminRoutes= require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 //imported router object from admin.js
 
-db.execute('SELECT * FROM products').then(result=>{
-    
-}).catch(err=>{
+db.execute('SELECT * FROM products')
+  .then(([rows, fields]) => {
+    console.log(rows);
+  })
+  .catch(err => {
     console.log(err);
-});
+  });
+
 
 const path = require('path');
 
