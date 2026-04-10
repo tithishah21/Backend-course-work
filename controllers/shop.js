@@ -17,7 +17,7 @@ exports.getProducts = (req,res, next) => {
 
 exports.getProduct = (req, res, next) => {
     const prodId = req.params.productId;
-    Product.findById(prodId)
+    Product.findByPk(prodId)
     .then(([products]) => {
         const product = products[0];
         if (!product) {
@@ -85,7 +85,7 @@ exports.getCart = (req,res,next) => {
 
 exports.postCart = (req,res,next) => {
     const prodId = req.body.productId;
-    Product.findById(prodId)
+    Product.findByPk(prodId)
     .then(([products]) => {
         const product = products[0];
         if (!product) {
@@ -99,7 +99,7 @@ exports.postCart = (req,res,next) => {
 
 exports.postCartDeleteProduct = (req, res, next) => {
     const prodId = req.body.productId;
-    Product.findById(prodId)
+    Product.findByPk(prodId)
     .then(([products]) => {
         const product = products[0];
         if (!product) {
