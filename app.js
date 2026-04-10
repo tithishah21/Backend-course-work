@@ -1,19 +1,15 @@
-const http = require('http');
-//creates server
+const http = require('http'); //creates server
 
 const bodyParser = require('body-parser');
 
-const { engine } = require('express-handlebars');
-//for installng handlebars
+const { engine } = require('express-handlebars'); //for installng handlebars
 
+const errorController = require('./controllers/error'); //controller for 404 page 
 
-const errorController = require('./controllers/error');
-//controller for 404 page 
+const sequelize = require('./util/database');
 
-const db = require('./util/database');
+const express = require('express'); //using express.js
 
-const express = require('express');
-//using express.js
 const app = express(); 
 
 // app.engine('handlebars', engine({ defaultLayout: 'main-layout' }));
@@ -25,13 +21,11 @@ app.set('view engine','ejs')
 //app.set() allows to set any values globally on our express application, can also be keys and anything
 //another way of sharing data across application
 
-app.set('views','views');
-// view engine (could be pug or ejs or handlebars) will look into the views folder
+app.set('views','views'); // view engine (could be pug or ejs or handlebars) will look into the views folder
 
 const adminRoutes= require('./routes/admin');
 
-const shopRoutes = require('./routes/shop');
-//imported router object from admin.js
+const shopRoutes = require('./routes/shop');//imported router object from admin.js
 
 // db.execute('SELECT * FROM products')
 //   .then(([rows, fields]) => {
@@ -57,4 +51,12 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-app.listen(3000); 
+//syncs your models to database
+sequelize.sync().then(result=>{
+    app.listen(3000);
+})
+.catch(err => {
+    console.log(err);
+}); 
+
+ 
