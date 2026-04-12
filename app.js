@@ -8,6 +8,10 @@ const errorController = require('./controllers/error'); //controller for 404 pag
 
 const sequelize = require('./util/database');
 
+const Product = require('./models/product');
+
+const User = require('./models/user');
+
 const express = require('express'); //using express.js
 
 const app = express(); 
@@ -51,8 +55,17 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
+
+// ---- DEFINING ASSOCITAION ----
+Product.belongsTo(User,{constraints: true,onDelete:'CASCADE'}); //it means that if we delete user, then anything related with user aslo gets deleted like orders etc
+User.hasMany(Product);
+
+
 //syncs your models to database
-sequelize.sync().then(result=>{
+sequelize.sync(
+    {force: true}
+)
+.then(result=>{
     app.listen(3000);
 })
 .catch(err => {
