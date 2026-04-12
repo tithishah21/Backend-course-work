@@ -49,6 +49,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 //and Express will return that file automatically — no route handler needed.
 //So it turns your public folder into a “static files” folder (CSS, images, JS, etc).
 
+app.use((req,res,next)=>{
+    User.findByPk(1)
+    .then(user => {
+        req.user = user;
+        next();
+    })
+    .catch(err => {console.log(err)});
+});
+
 app.use('/admin',adminRoutes.routes);
 
 app.use(shopRoutes);
