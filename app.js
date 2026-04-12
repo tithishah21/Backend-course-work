@@ -63,9 +63,19 @@ User.hasMany(Product);
 
 //syncs your models to database
 sequelize.sync(
-    {force: true}
+    // {force: true} //for overwriting tables
 )
 .then(result=>{
+    return User.findByPk(1);
+})
+.then(user => {
+    if(!user){
+        return User.create({name: 'Tithi',email:'shahtithi21@gmail.com'});
+    }
+    return user;
+})
+.then(user => {
+    // console.log(user);
     app.listen(3000);
 })
 .catch(err => {
