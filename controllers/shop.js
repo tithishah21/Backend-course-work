@@ -17,8 +17,7 @@ exports.getProducts = (req,res, next) => {
 exports.getProduct = (req, res, next) => {
     const prodId = req.params.productId;
     Product.findByPk(prodId)
-    .then(([products]) => {
-        const product = products[0];
+    .then(product => {
         if (!product) {
             return res.redirect('/products');
         }
@@ -63,11 +62,11 @@ exports.getCart = (req,res,next) => {
             });
         }
 
-        Product.fetchAll()
-        .then(([products]) => {
+        Product.findAll()
+        .then(products => {
             const cartProducts = [];
             for (const product of products) {
-                const cartProductData = cart.products.find(prod => prod.id === product.id);
+                const cartProductData = cart.products.find(prod => prod.id === product.id.toString());
                 if (cartProductData) {
                     cartProducts.push({productData: product, qty:cartProductData.qty});
                 }
@@ -85,8 +84,7 @@ exports.getCart = (req,res,next) => {
 exports.postCart = (req,res,next) => {
     const prodId = req.body.productId;
     Product.findByPk(prodId)
-    .then(([products]) => {
-        const product = products[0];
+    .then(product => {
         if (!product) {
             return res.redirect('/products');
         }
@@ -99,8 +97,7 @@ exports.postCart = (req,res,next) => {
 exports.postCartDeleteProduct = (req, res, next) => {
     const prodId = req.body.productId;
     Product.findByPk(prodId)
-    .then(([products]) => {
-        const product = products[0];
+    .then(product => {
         if (!product) {
             return res.redirect('/cart');
         }
